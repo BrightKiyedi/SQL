@@ -1,18 +1,18 @@
 -- How Much Money was made for the year
-SELECT SUM(Price_Each)
+SELECT SUM(Sales)
 FROM `sales.elec`;
 --This shows the how much was made for the current year and the amount of money the comapny needs to surpass in the following year
 
 
 -- What Item Earned the Most
-Select Product, SUM(Quantity_Ordered) AS Most_Sold, SUM(Price_Each) As Total_Earning
+Select Product, SUM(Quantity_Ordered) AS Most_Sold, SUM(Sales) As Total_Earning
 FROM `sales.elec`
 GROUP BY Product
 ORDER BY Total_Earning DESC;
 --This Tells us what the company needs to improve on, and which products to produce more of. In this case it shows that Laptops and Phones are the biggest sellers, so getting a newer model would greatly impact sales.
 
 -- What states earned the most for greatest to least
-SELECT State, SUM(Price_Each) AS Total_Earning,
+SELECT State, SUM(Sales) AS Total_Earning,
 FROM `sales.elec`
 Group By State
 ORDER BY Total_Earning DESC;
@@ -29,7 +29,7 @@ LIMIT 1;
 -- What was the Average Total Sales Per Month
 SELECT Month, AVG(Total_Price) AS Average_Price
 FROM (
-  SELECT Month, SUM(Price_Each) AS Total_Price
+  SELECT Month, SUM(Sales) AS Total_Price
   FROM `sales.elec`
   Group By Month
 )
