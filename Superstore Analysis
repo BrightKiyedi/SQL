@@ -1,0 +1,30 @@
+SELECT *
+FROM superstore
+ORDER BY price;
+--Highest Average Price in the store.
+SELECT category, AVG(Price) AS Price, stock_quantity
+FROM superstore
+GROUP BY category, stock_quantity
+ORDER BY Price DESC
+LIMIT 10;
+
+--How many different categories does the store have
+SELECT COUNT(category)
+FROM superstore;
+
+
+-- What are the details over items with a rating of 4.50 and above
+SELECT *
+FROM superstore
+WHERE average_rating >= 4.50;
+
+--What are the prices of all the Electronics in the Store
+SELECT item_name, category, price
+FROM superstore
+WHERE category = 'Electronics';
+
+--What is the Cheapest Item in the Store
+SELECT item_name, price
+FROM superstore
+ORDER BY price ASC
+LIMIT 1;
